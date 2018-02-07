@@ -7,6 +7,8 @@ class TritonKubernetes < Formula
     head "https://github.com/nimajalali/triton-kubernetes.git"
 
     depends_on "go" => :build
+    depends_on "terraform" => :run
+    depends_on "jq" => :run
 
     def install
     	# Initializing GOPATH
