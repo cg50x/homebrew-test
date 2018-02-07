@@ -9,12 +9,19 @@ class TritonKubernetes < Formula
     depends_on "go" => :build
 
     def install
+    	# Initializing GOPATH
         ENV["GOPATH"] = buildpath
+        
+        # Recreating Go workspace
         dir = buildpath/"src/github.com/joyent/triton-kubernetes"
         dir.install buildpath.children
+
+        # Building from source
         cd "src/github.com/joyent/triton-kubernetes" do
             system "go", "build"
         end
+
+        # Installing binary
         bin.install dir/"triton-kubernetes"
     end
 end
