@@ -13,9 +13,8 @@ class TritonKubernetes < Formula
         dir = buildpath/"src/github.com/joyent/triton-kubernetes"
         dir.install buildpath.children
         cd "src/github.com/joyent/triton-kubernetes" do
-            wasGood = system "go", "build"
-            ohai wasGood
+            system "go", "build"
         end
-        bin.install "triton-kubernetes"
+        bin.install dir/"triton-kubernetes"
     end
 end
